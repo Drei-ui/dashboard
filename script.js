@@ -14,97 +14,44 @@ function closeSB(){
     }
 }
 
-// -------------- Weather Chart ----------
-// script.js
-
-// Target the weatherData div
-const weatherDataDiv = document.getElementById('line-chart');
-
-// Fetch data from the API
-fetch('https://archive-api.open-meteo.com/v1/archive?latitude=13.4088&longitude=122.5615&start_date=2020-01-01&end_date=2023-08-13&hourly=temperature_2m')
-    .then(response => response.json())
-    .then(data => {
-        // Process the fetched data
-        const hourlyData = data['hourly']['apparent_temperature'];
-
-        // Create a list to display the data
-        const dataList = document.createElement('ul');
-        hourlyData.forEach(entry => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `Date: ${entry['timestamp']} | Temperature: ${entry['value']}°C`;
-            dataList.appendChild(listItem);
-        });
-
-        // Append the list to the weatherData div
-        weatherDataDiv.appendChild(dataList);
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-        weatherDataDiv.textContent = 'Error fetching data.';
-    });
-
-//------------------Line Chart---------------------
-
-var timeseriesoptions = {
-    series: [{
-    name: 'XYZ MOTORS',
-    data: dates
-  }],
-    chart: {
-    type: 'area',
-    stacked: false,
-    height: 350,
-    zoom: {
-      type: 'x',
-      enabled: true,
-      autoScaleYaxis: true
-    },
-    toolbar: {
-      autoSelected: 'zoom'
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
-  markers: {
-    size: 0,
-  },
-  title: {
-    text: 'Stock Price Movement',
-    align: 'left'
-  },
-  fill: {
-    type: 'gradient',
-    gradient: {
-      shadeIntensity: 1,
-      inverseColors: false,
-      opacityFrom: 0.5,
-      opacityTo: 0,
-      stops: [0, 90, 100]
-    },
-  },
-  yaxis: {
-    labels: {
-      formatter: function (val) {
-        return (val / 1000000).toFixed(0);
-      },
-    },
-    title: {
-      text: 'Price'
-    },
-  },
-  xaxis: {
-    type: 'datetime',
-  },
-  tooltip: {
-    shared: false,
-    y: {
-      formatter: function (val) {
-        return (val / 1000000).toFixed(0)
-      }
-    }
+function switchPage(pageUrl) {
+    console.log('Switching to:', pageUrl);
+    window.location.href = pageUrl;
   }
-  };
 
-  var chart = new ApexCharts(document.querySelector("#line-chart2"), timeseriesoptions);
-  chart.render();
+//Previous transaction time and date
+function handleFileUpload() {
+    // Get references to the file input, button, and transaction log div
+    const fileInput = document.getElementById('fileInput');
+    const submitButton = document.getElementById('submitButton');
+    const transactionLog = document.getElementById('transactionLog');
+  
+    // Add a click event listener to the button
+    submitButton.addEventListener('click', function() {
+      // Get the selected file
+      const selectedFile = fileInput.files[0];
+      
+      if (selectedFile) {
+        // Get the current date and time
+        const currentDate = new Date();
+        
+        // Format the date and time as a string
+        const timestamp = currentDate.toLocaleString();
+        
+        // Create a new paragraph element to display the transaction
+        const transactionInfo = document.createElement('p');
+        transactionInfo.textContent = `File "${selectedFile.name}" submitted at: ${timestamp}`;
+        
+        // Append the transaction information to the transaction log div
+        transactionLog.appendChild(transactionInfo);
+      } else {
+        alert("Please select a file to upload.");
+      }
+    });
+  }
+  
+  // Call the function to set up the file upload functionality
+  handleFileUpload();
+  
+
+
