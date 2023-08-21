@@ -41,8 +41,6 @@
         <ul class="sidebar-list">
             <li class="sidebar-list-item" onclick="switchPage('index.html')"><span class="material-icons-outlined">space_dashboard</span>Dashboard</li>
             <li class="sidebar-list-item"><span class="material-icons-outlined">insights</span>Forecast</li>
-            <li class="sidebar-list-item"><span class="material-icons-outlined">settings</span>System Settings</li>
-            <li class="sidebar-list-item"><span class="material-icons-outlined">manage_accounts</span>Account Settings</li>
         </ul>
     </aside>
     <!--NavBar-->
@@ -58,8 +56,10 @@
                     <h2 class="reports">Submit Report</h2>
                 </div>
                 <div class="input-container">
-                    <input type="file" id="fileInput">
-                    <button id="submitButton">Upload</button>
+                    <form id="fileInput" action="/predict" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" accept=".csv">
+                        <button id="submitButton" type="submit">Predict</button>
+                    </form>
                 </div>
             </div>
         </div>
