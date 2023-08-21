@@ -47,8 +47,7 @@
 
     <!--Main-->
     <main class="main-container">
-        <div class="main-title">
-            <h2>DASHBOARD</h2>
+        <div class="dash"><span class="material-icons-outlined">offline_bolt</span> LSTM Forecasting Model
         </div>
         <div class="main-cards">
             <div class="card">
@@ -57,37 +56,36 @@
                     <span class="material-icons-outlined">power</span>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-inner">
                     <h3>Anticipated Generation Charge Next Month</h3>
                     <span class="material-icons-outlined">electric_meter</span>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-inner">
                     <h3>Prediction Accuracy</h3>
                     <span class="material-icons-outlined">percent</span>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-inner">
-                    <h3>Previous Reports</h3>
-                    <span class="material-icons-outlined">summarize</span>
-                </div>
-            </div>
         </div>
-
         <div class="charts">
             <div class="chart-card">
-                <div class="charts-title">Monthly Average Temperature</div>
+                <div class="charts-title">Monthly Average Temperature</div> 
             </div>
             <div class="charts-card">
                 <h2 class="charts-title"> Predict Generation Charge for Specific Month</h2>
+                <div id="dateInputModal">
+                    <div id="dateInputContainer">
+                        <h3>Select Month and Year</h3>
+                        <input type="month" id="monthInput" required>
+                        <button id="confirmButton">Predict</button>
+                        <hr>
+                        <h3 class="charts-title">Predicted Generation Charge</h3>
+                    </div>
+                </div>
             </div>
-            <div class="chart-card">
+            <div class="chart-card1">
                 <div class="charts-title">Monthly Generation Charge</div>
             </div>
         </div>
