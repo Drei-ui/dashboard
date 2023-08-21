@@ -52,6 +52,31 @@ function handleFileUpload() {
   
   // Call the function to set up the file upload functionality
   handleFileUpload();
-  
+
+  function setupDateInputModal() {
+    const dateInputButton = document.getElementById('dateInputButton');
+    const dateInputModal = document.getElementById('dateInputModal');
+    const cancelButton = document.getElementById('cancelButton');
+    const confirmButton = document.getElementById('confirmButton');
+    const monthInput = document.getElementById('monthInput');
+    const yearInput = document.getElementById('yearInput');
+
+    dateInputButton.addEventListener('click', () => {
+        dateInputModal.style.display = 'block';
+    });
+
+    cancelButton.addEventListener('click', () => {
+        dateInputModal.style.display = 'none';
+    });
+
+    confirmButton.addEventListener('click', () => {
+        const selectedMonth = monthInput.value;
+        const selectedYear = yearInput.value;
+        // Do something with selectedMonth and selectedYear, e.g., trigger a function
+        dateInputModal.style.display = 'none';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupDateInputModal);
 
 
